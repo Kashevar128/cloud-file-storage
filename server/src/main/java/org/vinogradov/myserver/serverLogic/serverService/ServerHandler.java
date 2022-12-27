@@ -28,6 +28,10 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         this.serverLogicImpl = new ServerLogicImpl(dataBase, storage, nettyServer);
     }
 
+    //Реализация паттерна "Медиатор" в обработчики сообщений -
+    //имеется мапа в которой хранится ключ(класс пришедшего сообщения) и
+    //значение(логика обработчика - реакция на пришедшее сообщение)
+
     static {
 
         REQUEST_HANDLERS.put(RegOrAuthClientRequest.class, ((serverLogic, basicQuery) -> {
